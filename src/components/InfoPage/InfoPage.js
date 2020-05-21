@@ -35,6 +35,7 @@ class InfoPage extends Component {
   handleClick = () => {
     console.log(this.state)
     this.props.dispatch({type: 'addItem', payload: this.state})
+    this.props.dispatch({type:"GET_ITEM"})
   }
 
   render() {

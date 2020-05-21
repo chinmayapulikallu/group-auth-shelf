@@ -8,16 +8,45 @@ import Item from '../Item/Item.js'
 // or even care what the redux state is, so it doesn't need 'connect()'
 
 class InfoPage extends Component {
+  state = {
+    item_description: '',
+    item_image: ''
+  }
+
   componentDidMount(){
         this.props.dispatch({type:"GET_ITEM"})
     }
+    
+  handleChange = (event, property) => {
+    switch (property) {
+      case 'item_description':
+        return this.setState({
+          [property]: event.target.value
+        })
+        case 'item_image':
+        return this.setState({
+          [property]: event.target.value
+        })
+        default:
+          return this.state
+    }
+  }
+  
+  handleClick = () => {
+    console.log(this.state)
+    this.props.dispatch({type: 'addItem', payload: this.state})
+  }
 
   render() {
     return(
         <div>
-          <p>
-            Shelf Page
-          </p>
+          <h3>Add new Item</h3>
+          <input placeholder="item name" type="text" onChange={(event) => this.handleChange(event, "item_description")}/>
+          <input placeholder="item picture" type="text" onChange={(event) => this.handleChange(event, "item_image")}/>
+          <button onClick={this.handleClick}>Add Item</button>
+          <h1>
+            Shelf
+          </h1>
           <ul> 
               {this.props.reduxState.itemsReducer.map((item) => {
                 return (

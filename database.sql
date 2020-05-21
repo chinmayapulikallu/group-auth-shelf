@@ -15,3 +15,5 @@ CREATE TABLE "item" (
     "image_url" VARCHAR (2083),
     "user_id" INT REFERENCES "user"
 );
+
+INSERT INTO item ("description", "image_url", "user_id") VALUES ("apple","https://steemitimages.com/DQmZpRgMSms57P2WE5qFzvGh42CpK6J9hn5tQBXA4ZtMNvk/apple-fruit.jpg", 1 );

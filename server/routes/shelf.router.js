@@ -54,8 +54,16 @@ router.delete('/:id', (req, res) => {
  * Update an item if it's something the logged in user added
  */
 router.put('/:id', (req, res) => {
+  let query = `UPDATE item SET "description" = $1 WHERE id = $2`
+  let values = [req.body.payload, req.params.id ]
+  pool.query(query, values).then((result)=>{
+    res.sendStatus(200);
+  }).catch((error) =>{
+      console.log(error)
+      res.sendStatus(500);
+})
+})
 
-});
 
 
 /**

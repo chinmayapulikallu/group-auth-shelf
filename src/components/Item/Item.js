@@ -16,6 +16,10 @@ class Item extends Component {
     this.props.dispatch({type:"GET_ITEM"})
     }
 
+    editItem = () =>{
+      this.props.dispatch({type: 'EDIT_ITEM', payload: this.props.item })
+    }
+
     render() {
       return (
        <>
@@ -23,6 +27,7 @@ class Item extends Component {
         <h3>{this.props.item.description}</h3>
         <img src={this.props.item.image_url} alt={this.props.item.description} height='100px'></img>
         <button onClick={this.deleteItem}>Delete Item</button>
+        <button onClick={this.editItem}>Edit Item</button>
        </>
       );
     }

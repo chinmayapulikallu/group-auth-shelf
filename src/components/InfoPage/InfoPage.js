@@ -10,11 +10,13 @@ import Item from '../Item/Item.js'
 class InfoPage extends Component {
   state = {
     item_description: '',
-    item_image: ''
+    item_image: '',
+    user_id: this.props.reduxState.user.id
   }
 
   componentDidMount(){
         this.props.dispatch({type:"GET_ITEM"})
+        console.log("LOOK", this.state.user_id);
     }
     
   handleChange = (event, property) => {
